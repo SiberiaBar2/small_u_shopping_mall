@@ -1,0 +1,254 @@
+$red: red;
+
+.centerMenu {
+  display: flex;
+  height: 400px;
+
+  .mainMenu {
+    width: 185px;
+    background: #f7f8fc;
+    padding: 10px;
+    box-sizing: border-box;
+
+    .item {
+      margin-right: 5px;
+      font-size: 14px;
+      display: inline-block;
+      cursor: pointer;
+      margin-bottom: 5px;
+
+      &:hover {
+        color: rgb(238, 63, 77);
+        text-decoration: underline;
+      }
+    }
+  }
+
+  .background {
+    width: calc(100% - 185px);
+    position: relative;
+    padding: 10px;
+    box-sizing: border-box;
+  }
+}
+
+.menuContent {
+  margin: 0;
+  padding: 0;
+  padding: 10px;
+  height: 550px;
+  min-width: 500px;
+  border: 1px solid rgb(238, 63, 77);
+  border-radius: 10px;
+  left: 5px;
+  top: 5px;
+  z-index: 99;
+  position: absolute;
+  background: #fff;
+
+  .tagList {
+    display: flex;
+    margin-bottom: 10px;
+    .tag {
+      display: flex;
+      align-items: center;
+      background-color: black;
+      color: white;
+      margin-right: 10px;
+      height: 25px;
+      line-height: 25px;
+      padding: 0 10px;
+      &:hover {
+        background-color: $red;
+      }
+    }
+    img {
+      height: 18px;
+    }
+  }
+
+  > li {
+    list-style: none;
+  }
+  .title {
+    // background-color: aqua;
+  }
+  .detail {
+    display: flex;
+    // background-color: sandybrown;
+  }
+
+  .menuLine {
+    // height: 25px;
+    // line-height: 20px;
+    display: flex;
+    margin-bottom: 3px;
+  }
+
+  .menuItemTitle {
+    min-width: 80px;
+    // margin-right: 8px;
+    font-weight: 800;
+    font-size: 14px;
+    cursor: pointer;
+    &:hover {
+      color: rgb(238, 63, 77);
+      text-decoration: underline;
+    }
+  }
+
+  .menuItem {
+    margin-right: 15px;
+    margin-bottom: 8px;
+    cursor: pointer;
+    &:hover {
+      color: rgb(238, 63, 77);
+      text-decoration: underline;
+    }
+  }
+}
+
+.center {
+  padding: 0 120px;
+  box-sizing: border-box;
+}
+
+.findGoods {
+  display: flex;
+  margin: 20px 0;
+
+  .findGoodsImgWrap {
+    width: 190px;
+    height: 260px;
+    flex-shrink: 0;
+    margin-right: 20px;
+
+    > img {
+      width: 100%;
+      height: 100%;
+    }
+  }
+
+  .scroll {
+    height: 260px;
+    width: 1000px;
+    overflow: hidden;
+    // margin-left: 200px;
+    background-color: #fff;
+    .item {
+      &:hover {
+        cursor: pointer;
+      }
+      height: 260px;
+      width: 150px;
+      margin-top: 15px;
+      padding: 10px;
+      span {
+        width: 150px;
+        font-size: 14px;
+        margin: 10px 10px;
+      }
+      img {
+        padding: 10px;
+        width: 150px;
+        height: 150px;
+        border-radius: 20px;
+      }
+    }
+  }
+}
+
+.category {
+  // width: var(--content-width);
+  margin: 0 auto;
+  background-color: #fff;
+  height: 70px;
+  text-align: center;
+  .content {
+    width: 198px;
+    margin-top: 10px;
+    float: left;
+    &:not(:last-child) {
+      border-right: 1px solid #e8e8e8;
+    }
+    .category-title {
+      font-size: 16px;
+      font-weight: 700;
+      height: 30px;
+      line-height: 30px;
+    }
+    .category-content {
+      font-size: 14px;
+      // color: #999;
+      color: red;
+    }
+    &:hover {
+      cursor: pointer;
+      color: #e1251b;
+    }
+    &:hover div:last-child {
+      cursor: pointer;
+      color: #e1251b;
+    }
+    > div {
+      width: 80px;
+      margin: 0 auto;
+    }
+    .selected_title {
+      background-color: #e1251b;
+      color: #fff;
+      border-radius: 15px;
+    }
+    .selected_content {
+      color: #e1251b;
+    }
+  }
+}
+
+.categoryContent {
+  width: 1200px;
+  margin: 0 auto;
+  .goods {
+    background-color: #fff;
+    width: 232px;
+    height: 320px;
+    margin-bottom: 10px;
+    &:hover {
+      cursor: pointer;
+    }
+    // margin-right: 10px;
+    &:not(:nth-child(5n)) {
+      margin-right: 10px;
+    }
+    .first-row {
+      height: 210px;
+      line-height: 210px;
+      text-align: center;
+      img {
+        width: 150px;
+        height: 150px;
+      }
+    }
+    .second-row {
+      font-size: 12px;
+      color: #666;
+      width: 190px;
+      height: 40px;
+      line-height: 20px;
+      margin: 0 auto;
+      &:hover {
+        color: #c81623;
+      }
+    }
+    .third-row {
+      color: #c81623;
+      width: 190px;
+      margin: 0 auto;
+      margin-top: 20px;
+      span {
+        font-weight: 700;
+        font-size: 20px;
+      }
+    }
+  }
+}

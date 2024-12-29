@@ -1,0 +1,125 @@
+.shop-cart {
+  padding: 0 120px;
+  box-sizing: border-box;
+  .goods {
+    // width: var(--content-width);
+    // margin: 0 auto;
+    width: 100%;
+    .goods-num {
+      color: #e2231a;
+      font-size: 16px;
+      font-weight: 700;
+      margin: 10px 0;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      tr {
+        border-bottom: 1px solid #f0f0f0;
+
+        th {
+          background-color: #f3f3f3;
+          height: 45px;
+          &:nth-child(1) {
+            width: 70px;
+            padding-left: 10px;
+            display: flex;
+            align-items: center;
+            > span {
+              margin-left: 10px;
+            }
+          }
+        }
+        td {
+          padding-top: 10px;
+          padding-bottom: 10px;
+          img {
+            width: 80px;
+            height: 80px;
+            border: 1px solid #eeeeee;
+          }
+          &:nth-child(1) {
+            text-align: center;
+          }
+          &:nth-child(3) {
+            width: 600px;
+            padding-left: 20px;
+            padding-right: 50px;
+            &:hover {
+              color: #e2231a;
+              cursor: pointer;
+            }
+          }
+          &:nth-child(4) {
+            width: 80px;
+            text-align: center;
+          }
+          &:nth-child(5) {
+            width: 80px;
+            text-align: center;
+          }
+          &:nth-child(6) {
+            width: 120px;
+            text-align: center;
+            font-weight: 700;
+          }
+          &:nth-child(7) {
+            width: 80px;
+            text-align: center;
+          }
+        }
+      }
+    }
+    .bottom-tool {
+      margin-top: 10px;
+      border: 1px solid #f0f0f0;
+      height: 50px;
+      line-height: 50px;
+      .tool-left {
+        float: left;
+        padding-left: 20px;
+        span {
+          padding: 0 10px;
+          &:hover {
+            color: #e2231a;
+            cursor: pointer;
+          }
+        }
+        .clear-cart,
+        .delete-selected {
+          font-size: 14px;
+          font-weight: 700;
+        }
+      }
+      .tool-right {
+        float: right;
+        text-align: right;
+        span {
+          font-weight: 700;
+          color: #acacac;
+          em {
+            color: #e2231a;
+            font-weight: 700;
+            padding: 0 5px;
+          }
+        }
+        .price-count {
+          em {
+            font-size: 16px;
+          }
+        }
+        .go-order {
+          display: inline-block;
+          width: 95px;
+          line-height: 50px;
+          text-align: center;
+          height: 50px;
+          background-color: #e2231a;
+          color: white;
+          font-size: 18px;
+          font-weight: 700;
+        }
+      }
+    }
+  }
+}

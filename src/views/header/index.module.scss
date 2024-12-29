@@ -1,0 +1,27 @@
+.homeHeader {
+  background: rgb(242, 202, 201);
+  height: 40px;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  padding: 0 120px;
+  line-height: 40px;
+
+  .title {
+    color: rgb(250, 126, 35);
+    letter-spacing: 3px;
+  }
+
+  .right {
+    display: flex;
+    flex-direction: row-reverse;
+  }
+  .items {
+    margin-right: 8px;
+    font-size: 14px;
+    color: azure;
+    cursor: pointer;
+  }
+}

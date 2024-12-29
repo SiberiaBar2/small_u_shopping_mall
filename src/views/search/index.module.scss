@@ -1,0 +1,50 @@
+$red: #e2231a;
+
+.main {
+  height: 100px;
+  margin-top: 45px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  .content {
+    width: 550px;
+    height: 35px;
+    border: 2px solid $red;
+    margin-left: 80px;
+    display: flex;
+  }
+  input {
+    width: 485px;
+    line-height: 30px;
+    height: 30px;
+    padding-left: 15px;
+  }
+  span {
+    display: inline-block;
+    background-color: $red;
+    width: 50px;
+    height: 35px;
+    line-height: 35px;
+    text-align: center;
+    color: white;
+    font-weight: 700;
+    &:hover {
+      cursor: pointer;
+      background-color: #c81623;
+    }
+  }
+  .hotword {
+    margin-left: 80px;
+    margin-top: 15px;
+    a {
+      color: #999;
+      margin-right: 10px;
+      &:hover {
+        color: $red;
+      }
+    }
+    .active {
+      color: $red;
+    }
+  }
+}

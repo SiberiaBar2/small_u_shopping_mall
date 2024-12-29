@@ -1,0 +1,46 @@
+.comment {
+  .detail {
+    margin-top: 10px;
+    .left {
+      .header-content {
+        img {
+          height: 25px;
+          width: 25px;
+          border-radius: 25px;
+        }
+        .nick-name {
+          margin-left: 10px;
+        }
+      }
+    }
+    .right {
+      width: 830px;
+      margin-left: 70px;
+      .star {
+        img {
+          width: 14px;
+          height: 14px;
+        }
+      }
+      .text {
+        color: #333;
+        font-size: 14px;
+        margin-top: 10px;
+      }
+      .time {
+        margin-top: 10px;
+        color: #999;
+      }
+    }
+    hr {
+      margin-top: 10px;
+      margin-bottom: 10px;
+      border: 1px solid #dddddd;
+    }
+  }
+  .change_page {
+    margin-top: 20px;
+    margin-left: 75%;
+    margin-bottom: 20px;
+  }
+}
