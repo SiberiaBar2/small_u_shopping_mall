@@ -260,7 +260,7 @@ export default defineComponent({
       requestUserInfoData()
     })
     return () => (
-      <div>
+      <div class={styles.basicInfoWrap}>
         <div
           style={{
             padding: '20px',

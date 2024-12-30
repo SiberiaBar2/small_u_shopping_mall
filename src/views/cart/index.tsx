@@ -127,7 +127,7 @@ export default defineComponent({
         {/* <Shortcut />
         <Header /> */}
         <div class={styles.goods}>
-          <div class={styles['goods-num']}>全部商品&nbsp;&nbsp;{cartSumNums.value}</div>
+          <div class={styles['goods-num']}>全部商品&nbsp;&nbsp;({count.value})</div>
           <table>
             <tr>
               <th>

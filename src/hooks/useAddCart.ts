@@ -17,7 +17,7 @@ export const useCartAdd = () => {
       }),
       (res) => {
         if (res.status === 3000) {
-          message.success('添加购物车成功')
+          message.success(res?.data)
         }
       },
     )

@@ -33,4 +33,7 @@ export const URLS = {
   address_list: 'address/list/new',
   address_update: 'address/update',
   address_delete: 'address/delete',
+
+  // order
+  order_info: 'order/goods',
 }

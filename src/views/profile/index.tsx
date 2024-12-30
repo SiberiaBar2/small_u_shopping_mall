@@ -13,17 +13,6 @@ import Order from './components/order'
 
 const { getData, get, post } = request
 
-export interface BasicInfo {
-  id: number
-  email: string
-  birthday: Date
-  create_time: null
-  name: string
-  mobile: string
-  gender: string
-  password: string
-}
-
 enum Com {
   // BasicInfo,
   BasicInfo = 1,
