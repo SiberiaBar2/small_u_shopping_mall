@@ -26,10 +26,8 @@ import styles from './index.module.scss'
 export default defineComponent({
   name: 'ProfileView',
   setup(props, ctx) {
-    const activeIndex = ref(1)
-    // const router = useRouter()
-    // const { username, isLogin, setIsLogin, setUsername } = useLogin()
-
+    const route = useRoute()
+    const activeIndex = ref(+route.params.chooseIndex || 1)
     const changeComponent = (index: number) => {
       activeIndex.value = index
     }

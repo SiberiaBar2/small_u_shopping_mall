@@ -1,14 +1,17 @@
 import { defineComponent, onMounted, reactive, ref } from 'vue'
+import { useRouter } from 'vue-router'
+import { useMessage, NPopconfirm } from 'naive-ui'
+
 import { request } from '@/http'
 import { useLogin } from '@/store'
 import { URLS } from '@/requestUrls'
-import { setObj, setList } from '@/utils'
+import { setList } from '@/utils'
 
 import deletePng from '@/assets/images/profile/delete.png'
 
-const { getData, post, get } = request
-
 import styles from './index.module.scss'
+
+const { getData, post, get } = request
 
 export interface OrderInfo {
   trade_no: string
@@ -38,6 +41,8 @@ export default defineComponent({
   name: 'OrderView',
   setup(props, ctx) {
     const { username } = useLogin()
+    const message = useMessage()
+    const router = useRouter()
 
     const orderInfo = reactive<OrderInfo[]>([])
     const requestOrderData = (pay_status = -1) => {
@@ -46,7 +51,6 @@ export default defineComponent({
           username: username,
         }),
         (res) => {
-          console.log('rererereee', res)
           setList(orderInfo, res?.data)
         },
       )
@@ -103,6 +107,59 @@ export default defineComponent({
       }
       return orderStatus[payStatus]
     }
+
+    const toAction = (
+      pay_status: number,
+      trade_no: string,
+      order_amount: number,
+      order_goods: OrderGood[],
+    ) => {
+      console.log('trade_no', trade_no)
+      if (pay_status == 0) {
+        router.push('/order/' + trade_no)
+      } else if (pay_status == 1) {
+        router.push(`/OrderPayment/${trade_no}`)
+      } else if (pay_status == 2) {
+        const updateData = {
+          trade_no: trade_no,
+          pay_status: 3,
+        }
+        getData(post(URLS.order_update, updateData), (res) => {
+          message.success('收货成功')
+          setTimeout(() => {
+            location.reload()
+          }, 300)
+        })
+      } else if (pay_status == 3) {
+        const orderData = {
+          trade: {
+            order_amount: order_amount,
+          },
+          goods: order_goods,
+        }
+
+        getData(post(URLS.order_create, { username: username, ...orderData }), (res) => {
+          if (res.status == 3000) {
+            console.log('成功')
+            router.push(`/OrderPayment/${res?.data?.trade_no}`)
+          }
+        })
+      }
+    }
+
+    const deleteOrder = (tradeNo: string) => {
+      const updateData = {
+        trade_no: tradeNo,
+        is_delete: 1,
+      }
+
+      getData(post(URLS.order_update, updateData), (res) => {
+        message.success('删除成功')
+        setTimeout(() => {
+          window.location.reload()
+        }, 300)
+      })
+    }
     return () => (
       <div class={styles.order}>
         <div class={styles.condition}>
@@ -134,14 +191,19 @@ export default defineComponent({
                   <b>{item.trade_no}</b>
                 </td>
                 <td colspan="4" class={styles['img-td']}>
-                  {/* <el-popconfirm
-                      width="220"
-                      confirmButtonText="删除"
-                      cancelButtonText="不,谢谢"
-                      title="确认删除这个订单吗"
-                      onConfirm={() => deleteOrder(item.trade_no)}
-                    > */}
-                  <img src={deletePng} alt="" />
+                  <NPopconfirm
+                    onPositiveClick={() => {
+                      deleteOrder(item.trade_no)
+                    }}
+                    v-slots={{
+                      default: () => <div>确认删除？</div>,
+                      trigger: () => (
+                        <div>
+                          <img src={deletePng} alt="" />
+                        </div>
+                      ),
+                    }}
+                  />
                 </td>
               </tr>
               {item.order_goods.map((data, key) => (
@@ -159,15 +221,20 @@ export default defineComponent({
                   </td>
                   {key < 1 && (
                     <>
-                      <td rowspan={item.order_goods.length}>大周老师</td>
+                      <td rowspan={item.order_goods.length}>{username}</td>
                       <td rowspan={item.order_goods.length}>{item.order_amount}</td>
                       <td rowspan={item.order_goods.length}>{switchStatus(+item.pay_status)[0]}</td>
                       <td rowspan={item.order_goods.length}>
                         <span
                           class={styles['order-action']}
-                          // onClick={() =>
-                          //   toAction(item.pay_status, item.trade_no, item.order_amount, item.order_info)
-                          // }
+                          onClick={() =>
+                            toAction(
+                              +item.pay_status,
+                              item.trade_no,
+                              +item.order_amount,
+                              item.order_goods,
+                            )
+                          }
                         >
                           {switchStatus(+item.pay_status)[1]}
                         </span>

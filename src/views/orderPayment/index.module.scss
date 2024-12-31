@@ -1,0 +1,249 @@
+.order {
+  //   width: var(--content-width);
+  margin: 10px auto;
+  .header {
+    // border-bottom: 2px solid #f00c0c;
+    height: 130px;
+    line-height: 130px;
+  }
+  .title {
+    width: var(--content-width);
+    margin: 0 auto;
+    height: 80px;
+    line-height: 80px;
+    .logo {
+      height: 40px;
+    }
+    .shop-name {
+      font-size: 40px;
+      margin-left: 10px;
+      margin-top: 30px;
+      font-weight: 700;
+      color: #f00c0c;
+    }
+    .name {
+      font-size: 25px;
+      margin-left: 10px;
+      margin-top: 30px;
+    }
+  }
+
+  .title-text {
+    height: 42px;
+    line-height: 42px;
+    font-size: 16px;
+  }
+  .order-info {
+    border: 1px solid #f0f0f0;
+    margin-top: 20px;
+    .step-title {
+      height: 40px;
+      line-height: 40px;
+      padding-left: 20px;
+      h3 {
+        font-size: 14px;
+        font-weight: 700;
+      }
+    }
+    .add-address {
+      color: #005ea7;
+      padding-right: 20px;
+      padding-top: 20px;
+      &:hover {
+        cursor: pointer;
+        color: #df0000;
+      }
+    }
+    .step-context {
+      padding-left: 20px;
+      .address-name {
+        display: inline-block;
+        width: 145px;
+        height: 30px;
+        border: 2px solid #ddd;
+        line-height: 30px;
+        text-align: center;
+        margin-bottom: 15px;
+      }
+      .address-info {
+        margin-left: 30px;
+      }
+      .address-phone {
+        margin-left: 30px;
+      }
+      .address-default {
+        display: inline-block;
+        margin-left: 30px;
+        background-color: #999999;
+        color: white;
+        width: 60px;
+        height: 25px;
+        line-height: 25px;
+        text-align: center;
+      }
+    }
+    hr {
+      width: 1160px;
+      border: 1px solid #f0f0f0;
+    }
+    .pay-mode {
+      width: 100px;
+      height: 30px;
+      line-height: 30px;
+      text-align: center;
+      border: 2px solid #f0f0f0;
+      &:hover {
+        cursor: pointer;
+        border: 2px solid #df0000;
+      }
+    }
+    .selected {
+      border: 2px solid #df0000 !important;
+      background-image: url('@/assets/images/order/address-selected.png');
+      background-position: 103%;
+      background-repeat: no-repeat;
+      background-size: 35px;
+    }
+    .post-mode {
+      background-color: #f7f7f7;
+      padding: 10px 0px 10px 20px;
+      width: 350px;
+      div:nth-child(1) {
+        font-weight: 700;
+      }
+      div:nth-child(2) {
+        margin-top: 20px;
+        font-weight: 700;
+        width: 145px;
+        height: 30px;
+        line-height: 30px;
+        text-align: center;
+      }
+      div:nth-child(1) {
+        margin-top: 20px;
+      }
+    }
+    .goods-list {
+      background-color: #f3fbfe;
+      width: 780px;
+      .goods-shop-name {
+        margin-top: 10px;
+        margin-left: 20px;
+        font-weight: 700;
+      }
+      img {
+        background-color: white;
+        width: 85px;
+        height: 85px;
+        margin-top: 10px;
+        margin-left: 20px;
+        border: 1px solid #f0f0f0;
+      }
+      .goods-name {
+        width: 570px;
+        margin-left: 20px;
+      }
+      .goods-price {
+        margin-left: 20px;
+        color: #f00c0c;
+        font-weight: 700;
+      }
+      .goods-num {
+        margin-left: 20px;
+      }
+    }
+  }
+  .trade-foot {
+    background-color: #f4f4f4;
+    margin-top: 30px;
+    height: 50px;
+    line-height: 50px;
+    text-align: right;
+    padding-right: 40px;
+    .count-price {
+      margin-left: 30px;
+      color: #f00c0c;
+      font-size: 16px;
+      font-weight: 700;
+    }
+  }
+  .commit-order {
+    margin-top: 10px;
+    margin-bottom: 30px;
+    margin-right: 40px;
+    // width: 1160px;
+    text-align: right;
+    // border:1px solid red;
+    .commit-order-button {
+      width: 135px;
+      height: 35px;
+      background-color: #f00c0c;
+      color: white;
+      border-radius: 5px;
+    }
+  }
+}
+
+.order-pay {
+  //   width: var(--content-width);
+  margin: 0 auto;
+  .header {
+    // border-bottom: 2px solid #f00c0c;
+    height: 130px;
+    line-height: 130px;
+  }
+  .title {
+    width: var(--content-width);
+    margin: 0 auto;
+    height: 80px;
+    line-height: 80px;
+    .logo {
+      height: 40px;
+    }
+    .shop-name {
+      font-size: 40px;
+      margin-left: 10px;
+      margin-top: 30px;
+      font-weight: 700;
+      color: #f00c0c;
+    }
+    .name {
+      font-size: 25px;
+      margin-left: 10px;
+      margin-top: 30px;
+    }
+  }
+
+  .order-info {
+    margin-top: 50px;
+    .order-num {
+      font-size: 20px;
+    }
+    .pay-mode {
+      font-size: 16px;
+      margin-top: 20px;
+      padding: 20px;
+
+      .pay-count {
+        color: #e33f48;
+      }
+
+      .payTypeText {
+        display: flex;
+        align-items: center;
+      }
+    }
+    .pay-order {
+      text-align: right;
+      margin-top: 20px;
+      .pay-order-button {
+        margin-right: 200px;
+        width: 135px;
+        height: 35px;
+        background-color: #f00c0c;
+        color: white;
+        border-radius: 5px;
+      }
+    }
+  }
+}

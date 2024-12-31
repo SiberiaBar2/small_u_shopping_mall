@@ -35,5 +35,11 @@ export const URLS = {
   address_delete: 'address/delete',
 
   // order
-  order_info: 'order/goods',
+  order_info: 'order/info',
+  order_create: 'order/create',
+  order_goods: 'order/goods',
+  order_update: 'order/update',
+
+  // pay
+  pay_alipay: 'pay/alipay',
 }

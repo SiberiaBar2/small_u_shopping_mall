@@ -72,6 +72,10 @@ body #app {
   float: left;
 }
 
+.fr {
+  float: right;
+}
+
 .clearfix::after {
   visibility: hidden;
   clear: both;

@@ -4,6 +4,7 @@ import { URLS } from '@/requestUrls'
 import { setList, toParse } from '@/utils'
 import { useLogin } from '@/store'
 import { useRoute, useRouter } from 'vue-router'
+import { useMessage } from 'naive-ui'
 
 const { getData, post } = request
 
@@ -43,6 +44,7 @@ import { NInput, NInputNumber } from 'naive-ui'
 export default defineComponent({
   name: 'ShopCart',
   setup() {
+    const message = useMessage()
     const router = useRouter()
     const { username } = useLogin()
     const count = ref(0)
@@ -67,6 +69,19 @@ export default defineComponent({
         // if (res.status == 3000) {
         //   console.log('成功')
         // }
+      })
+    const requestAddPayment = ({
+      goods,
+      trade,
+    }: {
+      goods: Cart[]
+      trade: { order_amount: number }
+    }) =>
+      getData(post(URLS.order_create, { username: username, goods, trade }), (res) => {
+        if (res.status == 3000) {
+          console.log('成功')
+          router.push(`/OrderPayment/${res?.data?.trade_no}`)
+        }
       })
 
     onMounted(() => {
@@ -117,9 +132,24 @@ export default defineComponent({
     }
 
     const goOrder = () => {
-      console.log('去结算')
-      // 结算逻辑
-      router.push('/profile')
+      const orderGoodsList = [] as Cart[]
+      for (const i in cartListData) {
+        if (cartListData[i].checked == true) {
+          orderGoodsList.push(cartListData[i])
+        }
+      }
+      const orderData = {
+        trade: {
+          order_amount: priceCount.value,
+        },
+        goods: orderGoodsList,
+      }
+
+      if (orderGoodsList.length == 0) {
+        message.warning('请选择要结算的商品')
+        return
+      }
+      requestAddPayment({ ...orderData })
     }
 
     return () => (

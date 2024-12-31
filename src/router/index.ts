@@ -49,11 +49,29 @@ const router = createRouter({
       },
     },
     {
-      path: '/profile',
+      path: '/profile/:chooseIndex',
       name: 'profile',
       component: () => import('../views/profile'),
       meta: {
-        title: '订单',
+        title: '个人中心',
+        isAuthRequired: true,
+      },
+    },
+    {
+      path: '/OrderPayment/:trade_no',
+      name: 'orderPayment',
+      component: () => import('../views/orderPayment'),
+      meta: {
+        title: '订单结算',
+        isAuthRequired: true,
+      },
+    },
+    {
+      path: '/OrderPay',
+      name: 'OrderPay',
+      component: () => import('../views/orderPayment/orderPay'),
+      meta: {
+        title: '订单支付',
         isAuthRequired: true,
       },
     },
