@@ -4,7 +4,7 @@ import { useRouter, useRoute } from 'vue-router'
 import { useLogin } from '@/store'
 import { request } from '@/http'
 import { URLS } from '@/requestUrls'
-import { setList, setObj } from '@/utils'
+import { setList } from '@/utils'
 
 const { getData, post, get } = request
 
@@ -27,7 +27,7 @@ export default defineComponent({
   setup(props, ctx) {
     const route = useRoute()
     const router = useRouter()
-    const { username, isLogin, setIsLogin, setUsername } = useLogin()
+    const { username } = useLogin()
     const allAddresses = reactive<Address[]>([])
     const goodsInfo = reactive<any[]>([])
 
@@ -57,10 +57,6 @@ export default defineComponent({
         pay_status: 1, // 提交订单后状态为支付中
       }
       getData(post(URLS.order_update, orderParams), (res) => {
-        // setList(goodsInfo, res?.data?.order_goods)
-        // orderAmount.value = res.data.order_amount
-        console.log('resresres', res)
-
         router.push({
           name: 'OrderPay',
           query: {

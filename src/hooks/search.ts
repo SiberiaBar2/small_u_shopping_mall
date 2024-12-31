@@ -1,9 +1,9 @@
 import { computed, onMounted, reactive, ref, watchEffect } from 'vue'
+import { useRoute } from 'vue-router'
 
 import { request } from '@/http'
 import { URLS } from '@/requestUrls'
 import { setList, toParse } from '@/utils'
-import { useRoute, useRouter } from 'vue-router'
 
 const { getData, get } = request
 
@@ -19,7 +19,6 @@ export interface Search {
   sku_id: string
 }
 export const useSearch = () => {
-  const router = useRouter()
   const route = useRoute()
 
   const searchData = reactive<Search[]>([])

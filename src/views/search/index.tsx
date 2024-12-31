@@ -1,4 +1,4 @@
-import { computed, defineComponent, ref, watchEffect } from 'vue'
+import { defineComponent, ref, watchEffect } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
 
 import styles from './index.module.scss'

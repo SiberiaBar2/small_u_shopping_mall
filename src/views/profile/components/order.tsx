@@ -37,6 +37,7 @@ export interface OrderGood {
   name: string
   shop_name: string
 }
+
 export default defineComponent({
   name: 'OrderView',
   setup(props, ctx) {
@@ -87,6 +88,7 @@ export default defineComponent({
         isActive: false,
       },
     ])
+
     const changeOrderStatus = (ordeStatus: number) => {
       orderStatusDict.value.forEach((element) => {
         if (element.payStatus == ordeStatus) {

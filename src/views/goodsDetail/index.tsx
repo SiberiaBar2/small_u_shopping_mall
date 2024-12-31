@@ -1,15 +1,16 @@
 import { defineComponent, onMounted, reactive, ref } from 'vue'
-
-import styles from './index.module.scss'
 import { useRoute } from 'vue-router'
+import { NInputNumber } from 'naive-ui'
+
 import { request } from '@/http'
 import { URLS } from '@/requestUrls'
-import { setList, setObj } from '@/utils'
-import { NInputNumber } from 'naive-ui'
+import { setObj } from '@/utils'
 import CommentView from '@/components/comment'
 import { useCartAdd } from '@/hooks/useAddCart'
 
-const { getData, get, post } = request
+import styles from './index.module.scss'
+
+const { getData, get } = request
 
 type GoodsDetail = {
   id: number

@@ -16,9 +16,9 @@ import { useLogin } from '@/store'
 import { URLS } from '@/requestUrls'
 import { setList, setObj } from '@/utils'
 
-const { getData, post } = request
-
 import styles from './index.module.scss'
+
+const { getData, post } = request
 
 export interface Address {
   id?: number
@@ -53,6 +53,7 @@ const rules = {
     message: '请输入手机号码',
   },
 }
+
 export default defineComponent({
   name: 'AddressView',
   setup(props, ctx) {
@@ -69,6 +70,7 @@ export default defineComponent({
       telphone: '',
       default: false,
     })
+
     const showCardPreset = () => {
       const m = modal.create({
         title: `${type.value}地址`,
@@ -188,7 +190,7 @@ export default defineComponent({
         }),
         (res) => {
           if (res.status == 6000) {
-            message.success('s删除成功')
+            message.success('删除成功')
             requestAddressData()
           }
         },

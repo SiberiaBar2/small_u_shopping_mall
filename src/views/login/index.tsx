@@ -1,5 +1,6 @@
 import { defineComponent, ref } from 'vue'
 import { useRouter } from 'vue-router'
+
 // import Logo from './Logo'  // 假设你有一个 Logo 组件
 import styles from './index.module.scss' // 假设你使用了 CSS Modules
 import warning from '@/assets/images/login/warning.png'
@@ -8,10 +9,9 @@ import password from '@/assets/images/login/password.png'
 
 import { request } from '@/http'
 import { URLS } from '@/requestUrls'
-import { setList, toParse } from '@/utils'
-const { getData, post } = request
-
 import { useLogin } from '@/store'
+
+const { getData, post } = request
 
 export default defineComponent({
   name: 'LoginView',

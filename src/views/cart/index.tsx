@@ -1,10 +1,11 @@
-import { defineComponent, onMounted, onUpdated, reactive, ref, watchEffect } from 'vue'
+import { defineComponent, onMounted, reactive, ref } from 'vue'
+import { useRouter } from 'vue-router'
+import { useMessage } from 'naive-ui'
+
 import { request } from '@/http'
 import { URLS } from '@/requestUrls'
-import { setList, toParse } from '@/utils'
+import { setList } from '@/utils'
 import { useLogin } from '@/store'
-import { useRoute, useRouter } from 'vue-router'
-import { useMessage } from 'naive-ui'
 
 const { getData, post } = request
 
@@ -35,7 +36,6 @@ export interface Goods {
   find: null
 }
 
-// import { ElInputNumber } from 'element-plus'
 // import Shortcut from './Shortcut'
 // import Header from './Header'
 import styles from './index.module.scss'
@@ -88,7 +88,6 @@ export default defineComponent({
       requestFindGoods()
       requestCartCount()
     })
-    const cartSumNums = ref(1)
     const selectedGoodsCount = ref(0)
     const priceCount = ref(0)
 

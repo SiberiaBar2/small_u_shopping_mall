@@ -1,27 +1,18 @@
 import { defineComponent, ref } from 'vue'
-
-import { useLogin } from '@/store'
-import { request } from '@/http'
-import { URLS } from '@/requestUrls'
-import { setList, toParse, setObj } from '@/utils'
-import { useRoute, useRouter } from 'vue-router'
+import { useRoute } from 'vue-router'
 
 import BasicInfo from './components/basicInfo'
 import Address from './components/address'
 import Order from './components/order'
-// import Safe from './components/safe'
 
-const { getData, get, post } = request
+import styles from './index.module.scss'
 
 enum Com {
-  // BasicInfo,
   BasicInfo = 1,
   Address,
   Order,
   Safe,
 }
-
-import styles from './index.module.scss'
 
 export default defineComponent({
   name: 'ProfileView',
@@ -37,7 +28,6 @@ export default defineComponent({
         [Com.BasicInfo]: <BasicInfo />,
         [Com.Address]: <Address />,
         [Com.Order]: <Order />,
-        // [Com.Safe]: <Safe />,
       }[activeIndex.value]
     }
     return () => (
@@ -73,12 +63,6 @@ export default defineComponent({
                 >
                   我的订单
                 </div>
-                {/* <div
-                  class={`${activeIndex.value === 4 ? styles['active-menu'] : ''} ${styles.security}`}
-                  onClick={() => changeComponent(4)}
-                >
-                  安全设置
-                </div> */}
               </div>
               <div class={`${styles['right-content']} fl`}>{renderComponent()}</div>
             </div>

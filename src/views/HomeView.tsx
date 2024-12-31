@@ -1,6 +1,6 @@
 import { defineComponent, onMounted, onUnmounted, ref, watchEffect } from 'vue'
 import { Vue3SeamlessScroll } from 'vue3-seamless-scroll'
-import { NButton, NTag, NCarousel, NMessageProvider, useMessage, NModalProvider } from 'naive-ui'
+import { NCarousel } from 'naive-ui'
 import _ from 'lodash'
 
 import HomeHeader from './header'
@@ -17,21 +17,12 @@ import banner5 from '@/assets/images/banner/banner5.png'
 import banner6 from '@/assets/images/banner/banner6.png'
 
 import styles from './home.module.scss'
-import { MessageApiInjection } from 'naive-ui/es/message/src/MessageProvider'
-// import Vue3SeamlessScroll from './c'
 
-// export const windowC: W = window
-
-type W = Window &
-  typeof globalThis & {
-    $message?: MessageApiInjection
-  }
 export default defineComponent({
   components: {
     Vue3SeamlessScroll,
   },
   setup(props, ctx) {
-    // windowC['$message'] = useMessage()
     const images = ref([banner1, banner2, banner3, banner4, banner5, banner6])
     const {
       mainMenu,

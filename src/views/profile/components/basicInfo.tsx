@@ -1,11 +1,4 @@
 import { defineComponent, onMounted, reactive, ref } from 'vue'
-
-import { request } from '@/http'
-import { useLogin } from '@/store'
-import { URLS } from '@/requestUrls'
-import { setList, setObj } from '@/utils'
-
-import styles from './index.module.scss'
 import {
   FormInst,
   FormItemRule,
@@ -18,6 +11,13 @@ import {
   useMessage,
   useModal,
 } from 'naive-ui'
+
+import { request } from '@/http'
+import { useLogin } from '@/store'
+import { URLS } from '@/requestUrls'
+import { setObj } from '@/utils'
+
+import styles from './index.module.scss'
 
 const { getData, post } = request
 

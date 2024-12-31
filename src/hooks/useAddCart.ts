@@ -1,7 +1,7 @@
 import { useMessage } from 'naive-ui'
 
-import { request } from '@/http'
 import { URLS } from '@/requestUrls'
+import { request } from '@/http'
 
 const { getData, post } = request
 

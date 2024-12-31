@@ -12,6 +12,7 @@ const router = createRouter({
       component: HomeView,
       meta: {
         title: '首页',
+        isAuthRequired: false,
       },
     },
     {
@@ -20,6 +21,7 @@ const router = createRouter({
       component: () => import('../views/login'),
       meta: {
         title: '欢迎登录',
+        isAuthRequired: false,
       },
     },
     {
@@ -28,6 +30,7 @@ const router = createRouter({
       component: () => import('../views/goods_list'),
       meta: {
         title: '商品搜索',
+        isAuthRequired: false,
       },
     },
     {
@@ -36,7 +39,7 @@ const router = createRouter({
       component: () => import('../views/goodsDetail'),
       meta: {
         title: '商品详情',
-        isAuthRequired: true,
+        isAuthRequired: false,
       },
     },
     {
@@ -45,7 +48,7 @@ const router = createRouter({
       component: () => import('../views/cart'),
       meta: {
         title: '购物车',
-        // isAuthRequired:true
+        isAuthRequired: true,
       },
     },
     {

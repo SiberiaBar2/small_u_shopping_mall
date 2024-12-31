@@ -3,11 +3,11 @@ import { useRoute, useRouter } from 'vue-router'
 import { NPagination } from 'naive-ui'
 
 import shopCart from '@/assets/images/cart/add-cart1.png'
+import { useCartAdd } from '@/hooks/useAddCart'
 import { useSearch } from '@/hooks/search'
 import SearchInput from '../search'
 
 import styles from './index.module.scss'
-import { useCartAdd } from '@/hooks/useAddCart'
 
 export default defineComponent({
   name: 'GoodsList',
