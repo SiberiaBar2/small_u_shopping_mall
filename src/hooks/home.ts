@@ -68,7 +68,9 @@ export const useHome = () => {
   const goodsCategory = reactive<CategoryResult[]>([])
 
   const requestSubMenu = (param: SubMenu) =>
-    getData(get(URLS.sub_menu, param), (res) => setList(subMenu, res?.data))
+    getData(get(URLS.sub_menu + `?main_menu_id=${param.main_menu_id}`), (res) =>
+      setList(subMenu, res?.data),
+    )
   const requestMainMenu = () => getData(get(URLS.main_menu), (res) => setList(mainMenu, res?.data))
   const requestFindGoods = () =>
     getData(get(URLS.goods_find), (res) => {

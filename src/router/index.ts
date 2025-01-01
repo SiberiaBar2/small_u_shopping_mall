@@ -16,7 +16,7 @@ const router = createRouter({
       },
     },
     {
-      path: '/login',
+      path: '/login/:isregister',
       name: 'login',
       component: () => import('../views/login'),
       meta: {

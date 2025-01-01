@@ -17,6 +17,7 @@ export default defineComponent({
           <div
             class={styles.items}
             onClick={() => {
+              if (!username) return
               localStorage.removeItem('token')
               setIsLogin(false)
               setUsername('')
@@ -37,7 +38,7 @@ export default defineComponent({
           <div
             class={styles.items}
             onClick={() => {
-              router.push('/login')
+              router.push(`/login/register`)
             }}
           >
             注册
@@ -46,7 +47,7 @@ export default defineComponent({
             <div
               class={styles.items}
               onClick={() => {
-                router.push('/login')
+                router.push('/login/1')
               }}
             >
               请登录

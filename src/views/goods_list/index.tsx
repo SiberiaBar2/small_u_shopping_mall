@@ -15,7 +15,7 @@ export default defineComponent({
     const route = useRoute()
     const router = useRouter()
     const requestCartAdd = useCartAdd()
-    const { searchData, page, order, keyword, total } = useSearch()
+    const { searchData, page, keyword, total } = useSearch()
 
     const orderTypes = ref([
       { index: 1, order: 1, name: '综合', isActive: true },

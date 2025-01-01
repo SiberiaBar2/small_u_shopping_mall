@@ -7,6 +7,8 @@ export const URLS = {
 
   // login
   user_login: 'user/login',
+  // register
+  user_register: 'user/register',
 
   // search
   goods_search: 'goods/search/',

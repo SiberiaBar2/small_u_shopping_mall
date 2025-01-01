@@ -35,12 +35,7 @@ export default defineComponent({
     const isShow = ref<boolean>(false)
 
     const renderMainMenu = () => (
-      <div
-        class={styles.centerMenu}
-        onMouseleave={() => {
-          isShow.value = false
-        }}
-      >
+      <div class={styles.centerMenu}>
         <div class={styles.mainMenu}>
           {mainMenu.map((ele) => {
             return (
@@ -48,10 +43,10 @@ export default defineComponent({
                 key={ele?.main_menu_id}
                 class={styles.item}
                 onMousemove={_.debounce((e) => {
-                  console.log('222', e)
                   requestSubMenu({
                     main_menu_id: ele?.main_menu_id,
                   })
+                  e.stopPropagation()
                   isShow.value = true
                 }, 200)}
               >
@@ -71,6 +66,9 @@ export default defineComponent({
               class={styles.menuContent}
               style={{
                 display: isShow.value ? 'block' : 'none',
+              }}
+              onMouseleave={() => {
+                isShow.value = false
               }}
             >
               {showSubMenuData.value.map((item, index) => {
@@ -237,7 +235,12 @@ export default defineComponent({
       <div>
         <div>
           <HomeHeader />
-          <div class={styles.center}>
+          <div
+            class={styles.center}
+            onMouseleave={() => {
+              isShow.value = false
+            }}
+          >
             <SearchInput />
 
             {renderMainMenu()}
