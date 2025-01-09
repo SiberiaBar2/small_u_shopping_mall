@@ -3,18 +3,14 @@ import { useLogin } from '@/store'
 import { useRouter } from 'vue-router'
 
 export const client = (url: string = '', method: string = 'GET', params?: unknown) => {
-  // console.log('import.meta.env.MODE', import.meta.env.MODE)
   const { setIsLogin, setUsername } = useLogin()
   const router = useRouter()
   const queryParams = new URLSearchParams(params as any)
   const reurl = method === 'GET' ? (_.isEmpty(queryParams) ? url : url + '?' + queryParams) : url
   const requestUrl =
     import.meta.env.MODE === 'production'
-      ? // ? `https://www.subjectservice.shop/${url}`
-        `http://localhost:8000/${reurl}`
+      ? `${import.meta.env.VITE_APP_BASE_URL}/${reurl}`
       : `http://localhost:8000/${reurl}`
-
-  console.log('requestUrl', requestUrl)
 
   const token = window.localStorage.getItem('token')
 
