@@ -6,6 +6,7 @@ import shopCart from '@/assets/images/cart/add-cart1.png'
 import { useCartAdd } from '@/hooks/useAddCart'
 import { useSearch } from '@/hooks/search'
 import SearchInput from '../search'
+import HomeHeader from '../header'
 
 import styles from './index.module.scss'
 
@@ -37,99 +38,104 @@ export default defineComponent({
     }
 
     return () => (
-      <div class={styles.goodsList}>
-        <SearchInput />
-        <div class={styles['all-goods']}>
-          <div>
-            <span>全部商品分类</span>
-          </div>
-        </div>
-
-        <div class={styles['all-goods-list']}>
-          <div class={styles['result-keyword']}>
-            <span class={styles['all-result-font']}>全部结果&nbsp;&nbsp;{'>'}&nbsp;&nbsp;</span>
-            <span class={styles['search-word']}>{keyword.value}</span>
-          </div>
-
-          <div class={styles['goods-list']}>
-            <div class={styles['search-condition']}>
-              {orderTypes.value.map((ele, index) => {
-                const cls = [
-                  (() => {
-                    if (ele.isActive) return styles['current-condition']
-                    return styles['not-current-condition']
-                  })(),
-                ]
-                return (
-                  <a
-                    href="#"
-                    key={index}
-                    class={cls}
-                    onClick={() => {
-                      changeOrder(ele.order, ele.index)
-                    }}
-                  >
-                    <span>{ele.name}</span>
-                    <img src="" alt="" />
-                  </a>
-                )
-              })}
+      <div>
+        <HomeHeader />
+        <div class={styles.goodsList}>
+          <SearchInput />
+          <div class={styles['all-goods']}>
+            <div>
+              <span>全部商品分类</span>
             </div>
           </div>
 
-          <div class={[styles['list-detail'], 'clearfix']}>
-            {searchData.map((ele, index) => {
-              return (
-                <div
-                  key={index}
-                  class={[styles['erery-goods'], 'fl']}
-                  onClick={() => {
-                    window.open('/detail/' + ele?.sku_id)
-                  }}
-                >
-                  <div>
-                    <img src={ele.image} class={styles['goods_image']} alt="" />
-                  </div>
-                  <div class={styles['price']}>￥{ele.p_price}</div>
-                  <div class={[styles['name'], 'cs', 'dian2']}>{ele.name}</div>
-                  <div class={styles['comment-count']}>
-                    <span class={styles['count']}>{ele.comment_count ? ele.comment_count : 0}</span>
-                    <span class={styles['comment']}>条评价</span>
-                  </div>
-                  <div class={styles['shop-name']}>{ele.shop_name}</div>
+          <div class={styles['all-goods-list']}>
+            <div class={styles['result-keyword']}>
+              <span class={styles['all-result-font']}>全部结果&nbsp;&nbsp;{'>'}&nbsp;&nbsp;</span>
+              <span class={styles['search-word']}>{keyword.value}</span>
+            </div>
+
+            <div class={styles['goods-list']}>
+              <div class={styles['search-condition']}>
+                {orderTypes.value.map((ele, index) => {
+                  const cls = [
+                    (() => {
+                      if (ele.isActive) return styles['current-condition']
+                      return styles['not-current-condition']
+                    })(),
+                  ]
+                  return (
+                    <a
+                      href="#"
+                      key={index}
+                      class={cls}
+                      onClick={() => {
+                        changeOrder(ele.order, ele.index)
+                      }}
+                    >
+                      <span>{ele.name}</span>
+                      <img src="" alt="" />
+                    </a>
+                  )
+                })}
+              </div>
+            </div>
+
+            <div class={[styles['list-detail'], 'clearfix']}>
+              {searchData.map((ele, index) => {
+                return (
                   <div
-                    class={[styles['add-cart'], 'cs']}
-                    onClick={(e) => {
-                      e.stopPropagation()
-                      requestCartAdd({
-                        sku_id: ele.sku_id,
-                        nums: 1,
-                      })
+                    key={index}
+                    class={[styles['erery-goods'], 'fl']}
+                    onClick={() => {
+                      window.open('/detail/' + ele?.sku_id)
                     }}
                   >
-                    <img src={shopCart} alt="" />
-                    加入购物车
+                    <div>
+                      <img src={ele.image} class={styles['goods_image']} alt="" />
+                    </div>
+                    <div class={styles['price']}>￥{ele.p_price}</div>
+                    <div class={[styles['name'], 'cs', 'dian2']}>{ele.name}</div>
+                    <div class={styles['comment-count']}>
+                      <span class={styles['count']}>
+                        {ele.comment_count ? ele.comment_count : 0}
+                      </span>
+                      <span class={styles['comment']}>条评价</span>
+                    </div>
+                    <div class={styles['shop-name']}>{ele.shop_name}</div>
+                    <div
+                      class={[styles['add-cart'], 'cs']}
+                      onClick={(e) => {
+                        e.stopPropagation()
+                        requestCartAdd({
+                          sku_id: ele.sku_id,
+                          nums: 1,
+                        })
+                      }}
+                    >
+                      <img src={shopCart} alt="" />
+                      加入购物车
+                    </div>
                   </div>
-                </div>
-              )
-            })}
-          </div>
+                )
+              })}
+            </div>
 
-          <div class={styles['change_page']}>
-            <div class={styles['block']}>
-              <span class={styles.demonstration}></span>
-              <NPagination
-                size="large"
-                pageSize={15}
-                page={page.value}
-                pageCount={Math.ceil(total.value / 15)}
-                onUpdatePage={(p) => {
-                  router.push({
-                    name: 'goodsList',
-                    params: { ...route.params, page: p },
-                  })
-                }}
-              />
+            <div class={styles['change_page']}>
+              <div class={styles['block']}>
+                <span class={styles.demonstration}></span>
+                <NPagination
+                  size="large"
+                  pageSize={15}
+                  page={page.value}
+                  pageCount={Math.ceil(total.value / 15)}
+                  onUpdatePage={(p) => {
+                    router.push({
+                      name: 'goodsList',
+                      params: { ...route.params, page: p },
+                    })
+                  }}
+                />
+              </div>
             </div>
           </div>
         </div>

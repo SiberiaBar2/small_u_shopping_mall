@@ -12,7 +12,9 @@ export default defineComponent({
     const { username, isLogin, setIsLogin, setUsername } = useLogin()
     return () => (
       <div class={styles.homeHeader}>
-        <h3 class={styles.title}>小U商城</h3>
+        <h3 class={styles.title} onClick={() => router.push('/')}>
+          小U商城
+        </h3>
         <div class={styles.right}>
           <div
             class={styles.items}
@@ -53,7 +55,7 @@ export default defineComponent({
               请登录
             </div>
           ) : (
-            <div class={styles.items} onClick={() => router.push('/profile')}>
+            <div class={styles.items} onClick={() => router.push('/profile/1')}>
               {username}
             </div>
           )}

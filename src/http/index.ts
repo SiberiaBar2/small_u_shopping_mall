@@ -9,7 +9,7 @@ export const client = (url: string = '', method: string = 'GET', params?: unknow
   const reurl = method === 'GET' ? (_.isEmpty(queryParams) ? url : url + '?' + queryParams) : url
   const requestUrl =
     import.meta.env.MODE === 'production'
-      ? `${import.meta.env.VITE_APP_BASE_URL}/${reurl}`
+      ? `${import.meta.env.VITE_APP_BASE_URL}/api/${reurl}`
       : `http://localhost:8000/${reurl}`
 
   const token = window.localStorage.getItem('token')

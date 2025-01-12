@@ -9,6 +9,10 @@
   padding: 0 120px;
   line-height: 40px;
 
+  > h3 {
+    cursor: pointer;
+  }
+
   .title {
     color: rgb(250, 126, 35);
     letter-spacing: 3px;

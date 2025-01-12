@@ -4,8 +4,7 @@
 .all-goods {
   border-bottom: 2px solid #f30213;
   div {
-    width: var(--content-width);
-    margin: 0 auto;
+    margin: 0 120px;
     span {
       display: block;
       background-color: #f30213;
@@ -20,8 +19,7 @@
 }
 
 .all-goods-list {
-  width: var(--content-width);
-  margin: 0 auto;
+  margin: 0px 120px;
   .result-keyword {
     margin-top: 20px;
     .all-result-font {
@@ -123,6 +121,9 @@
         margin-top: 10px;
         margin-left: 5px;
         color: #999;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        overflow: hidden;
       }
       .add-cart {
         margin-top: 10px;

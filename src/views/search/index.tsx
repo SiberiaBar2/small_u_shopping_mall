@@ -59,7 +59,8 @@ export default defineComponent({
           />
           <span
             class={'iconfont icon-fangdajing'}
-            onClick={() => {
+            onClick={(e) => {
+              e.preventDefault()
               search(searchValue.value)
             }}
           />
@@ -74,7 +75,15 @@ export default defineComponent({
               })(),
             ]
             return (
-              <a href="#" class={cls} key={ele.word} onClick={() => search(ele.word)}>
+              <a
+                href="#"
+                class={cls}
+                key={ele.word}
+                onClick={(e) => {
+                  e.preventDefault()
+                  search(ele.word)
+                }}
+              >
                 {ele.word}
               </a>
             )

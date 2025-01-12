@@ -1,4 +1,5 @@
 import { defineComponent, onMounted, onUnmounted, ref, watchEffect } from 'vue'
+import { useRouter } from 'vue-router'
 import { Vue3SeamlessScroll } from 'vue3-seamless-scroll'
 import { NCarousel } from 'naive-ui'
 import _ from 'lodash'
@@ -23,6 +24,7 @@ export default defineComponent({
     Vue3SeamlessScroll,
   },
   setup(props, ctx) {
+    const router = useRouter()
     const images = ref([banner1, banner2, banner3, banner4, banner5, banner6])
     const {
       mainMenu,
@@ -34,6 +36,10 @@ export default defineComponent({
     } = useHome()
     const isShow = ref<boolean>(false)
 
+    const searchGoods = (keyword: string) => {
+      router.push('/goods_list/' + (keyword || '1') + '/1/1')
+    }
+
     const renderMainMenu = () => (
       <div class={styles.centerMenu}>
         <div class={styles.mainMenu}>
@@ -42,6 +48,9 @@ export default defineComponent({
               <span
                 key={ele?.main_menu_id}
                 class={styles.item}
+                onClick={() => {
+                  searchGoods(ele?.main_menu_name)
+                }}
                 onMousemove={_.debounce((e) => {
                   requestSubMenu({
                     main_menu_id: ele?.main_menu_id,
@@ -78,7 +87,13 @@ export default defineComponent({
                       {item.data.map((ele: any, i) => {
                         if (ele.type === 'channel')
                           return (
-                            <div class={[styles.tag, 'cs']} key={ele.key}>
+                            <div
+                              class={[styles.tag, 'cs']}
+                              key={ele.key}
+                              onClick={() => {
+                                searchGoods(ele?.name)
+                              }}
+                            >
                               <span>{ele.name}</span>
                               <img src={whiteArrow} alt="" />
                             </div>
@@ -90,7 +105,13 @@ export default defineComponent({
                       {item.data.map((ele: any, i) => {
                         if (ele.type === 'dt')
                           return (
-                            <span class={styles.menuItemTitle} key={ele.key}>
+                            <span
+                              class={styles.menuItemTitle}
+                              key={ele.key}
+                              onClick={() => {
+                                searchGoods(ele?.name)
+                              }}
+                            >
                               {ele.name} {'>'}
                             </span>
                           )
@@ -100,7 +121,13 @@ export default defineComponent({
                         {item.data.map((ele: any, i) => {
                           if (ele.type === 'dd')
                             return (
-                              <span class={styles.menuItem} key={ele.key}>
+                              <span
+                                class={styles.menuItem}
+                                key={ele.key}
+                                onClick={() => {
+                                  searchGoods(ele?.name)
+                                }}
+                              >
                                 {ele.name}
                               </span>
                             )

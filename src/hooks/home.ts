@@ -3,6 +3,7 @@ import { computed, onMounted, reactive } from 'vue'
 import { request } from '@/http'
 import { URLS } from '@/requestUrls'
 import { setList, toParse } from '@/utils'
+import _ from 'lodash'
 
 const { getData, get } = request
 
@@ -67,11 +68,27 @@ export const useHome = () => {
   const goodsFind = reactive<GoosFind[]>([])
   const goodsCategory = reactive<CategoryResult[]>([])
 
-  const requestSubMenu = (param: SubMenu) =>
-    getData(get(URLS.sub_menu + `?main_menu_id=${param.main_menu_id}`), (res) =>
-      setList(subMenu, res?.data),
-    )
-  const requestMainMenu = () => getData(get(URLS.main_menu), (res) => setList(mainMenu, res?.data))
+  const menuValue = new MenuValue()
+  const requestSubMenu = (param: SubMenu) => {
+    if (menuValue.ishaveSubmenuValue(param?.main_menu_id)) {
+      setList(subMenu, menuValue.getSubmenuValue(param?.main_menu_id))
+    } else {
+      getData(get(URLS.sub_menu + `?main_menu_id=${param.main_menu_id}`), (res) => {
+        setList(subMenu, res?.data)
+        menuValue.setSubmenu(param.main_menu_id, res?.data)
+      })
+    }
+  }
+  const requestMainMenu = () => {
+    const mainMenuSave = menuValue.getMainmenu()
+
+    if (mainMenuSave?.length == 0) {
+      getData(get(URLS.main_menu), (res) => {
+        setList(mainMenu, res?.data)
+        menuValue.setMainmenu(res?.data)
+      })
+    }
+  }
   const requestFindGoods = () =>
     getData(get(URLS.goods_find), (res) => {
       setList(goodsFind, res?.data)
@@ -123,15 +140,22 @@ export const useHome = () => {
   }
 }
 
-class SubMenuValue {
+class MenuValue {
+  private mainmenu = [] as ResultMainMenu[]
   private submenu = {} as Record<string, ResultSubMenu[]>
 
+  public setMainmenu = (mainMenuList: ResultMainMenu[]) => {
+    this.mainmenu.push(...mainMenuList)
+  }
+  public getMainmenu = () => {
+    return this.mainmenu
+  }
   public setSubmenu = (key: string, value: ResultSubMenu[]) => {
     this.submenu[key] = value
   }
 
-  public ishaveKey = (key: string) => {
-    if (this.submenu[key] && this.submenu[key].length > 0) {
+  public ishaveSubmenuValue = (key: string) => {
+    if (this.submenu?.[key] && this.submenu?.[key]?.length > 0) {
       return true
     }
     return false
@@ -142,4 +166,4 @@ class SubMenuValue {
   }
 }
 
-export const submenuValue = new SubMenuValue()
+export const menuValue = new MenuValue()

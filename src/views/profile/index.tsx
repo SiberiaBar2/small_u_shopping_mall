@@ -4,6 +4,7 @@ import { useRoute } from 'vue-router'
 import BasicInfo from './components/basicInfo'
 import Address from './components/address'
 import Order from './components/order'
+import HomeHeader from '../header'
 
 import styles from './index.module.scss'
 
@@ -34,6 +35,7 @@ export default defineComponent({
       <div>
         {/* <Shortcut /> */}
         <div class={[styles.profile]}>
+          <HomeHeader />
           <div class={styles.header}>
             <div class={`${styles.title} clearfix`}>
               <div class={`${styles.logo} fl`}>{/* <Logo /> */}</div>
