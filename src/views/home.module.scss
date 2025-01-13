@@ -3,6 +3,7 @@ $red: red;
 .centerMenu {
   display: flex;
   height: 400px;
+  justify-content: center;
 
   .mainMenu {
     width: 185px;
@@ -25,7 +26,7 @@ $red: red;
   }
 
   .background {
-    width: calc(100% - 185px);
+    width: calc(1200px - 185px);
     position: relative;
     padding: 10px;
     box-sizing: border-box;
@@ -115,6 +116,7 @@ $red: red;
 
 .findGoods {
   display: flex;
+  justify-content: center;
   margin: 20px 0;
 
   .findGoodsImgWrap {
@@ -164,6 +166,9 @@ $red: red;
   background-color: #fff;
   height: 70px;
   text-align: center;
+
+  display: flex;
+  justify-content: center;
   .content {
     width: 198px;
     margin-top: 10px;

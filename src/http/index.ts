@@ -39,7 +39,7 @@ export const client = (url: string = '', method: string = 'GET', params?: unknow
         localStorage.removeItem('token')
         setIsLogin(false)
         setUsername('')
-        router.push('/login')
+        router.push('/login/1')
       }
       return data
     })

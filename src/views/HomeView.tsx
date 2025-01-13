@@ -41,7 +41,7 @@ export default defineComponent({
     }
 
     const renderMainMenu = () => (
-      <div class={styles.centerMenu}>
+      <div class={[styles.centerMenu]}>
         <div class={styles.mainMenu}>
           {mainMenu.map((ele) => {
             return (
@@ -274,7 +274,7 @@ export default defineComponent({
 
             {renderGoodsFind()}
 
-            <div class={[styles.category, styles.clearfix]}>
+            <div class={[styles.category, 'clearfix']}>
               {category.value.map((ele, index) => {
                 const cls = [
                   styles['category-title'],
