@@ -34,6 +34,7 @@ interface BasicInfo {
 }
 
 interface RePassw {
+  id?: number
   old_password?: string
   password?: string
   passwordre?: string
@@ -91,19 +92,16 @@ export default defineComponent({
       },
       password: {
         required: true,
-        validator(rule: FormItemRule, value: string) {
-          return value === modelrePassw.passwordre
-        },
         trigger: ['blur', 'input'],
         message: '请输入新密码',
       },
       passwordre: {
         required: true,
         validator(rule: FormItemRule, value: string) {
-          return value === modelrePassw.password
+          return value == modelrePassw.password
         },
         trigger: ['blur', 'input'],
-        message: '请再次输入密码, ',
+        message: '请再次输入密码，确保两次密码一致',
       },
     }
     const showCardPreset = () => {
@@ -191,12 +189,12 @@ export default defineComponent({
           <NForm
             model={modelrePassw}
             rules={rePasswRules}
-            ref={formRef}
+            ref={rePasswformRef}
             labelPlacement="left"
             labelWidth={100}
           >
             <NFormItem label="旧密码" path="old_password">
-              <NInput v-model:value={modelrePassw.old_password} />
+              <NInput type="password" v-model:value={modelrePassw.old_password} />
             </NFormItem>
             <NFormItem label="新密码：" path="password">
               <NInput type="password" v-model:value={modelrePassw.password} />
@@ -221,6 +219,7 @@ export default defineComponent({
                       message.success('验证成功')
                       const params = { ...modelrePassw }
                       delete params?.passwordre
+
                       requestUpdateUserInfo(params)
                       m.destroy()
                     } else {
@@ -305,6 +304,9 @@ export default defineComponent({
           </NButton>
           <NButton
             onClick={() => {
+              setObj(modelrePassw, {
+                id: userInfo.id,
+              })
               showCardEditPassword()
             }}
           >
