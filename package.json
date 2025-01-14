@@ -16,6 +16,7 @@
   },
   "dependencies": {
     "@types/lodash": "^4.17.13",
+    "dayjs": "^1.11.13",
     "lodash": "^4.17.21",
     "pinia": "^2.2.6",
     "pinia-plugin-persistedstate": "^4.2.0",

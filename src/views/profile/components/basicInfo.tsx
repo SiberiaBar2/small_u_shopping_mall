@@ -10,7 +10,9 @@ import {
   NRadioGroup,
   useMessage,
   useModal,
+  NDatePicker,
 } from 'naive-ui'
+import dayjs from 'dayjs'
 
 import { request } from '@/http'
 import { useLogin } from '@/store'
@@ -66,7 +68,7 @@ export default defineComponent({
       },
       birthday: {
         required: false,
-        trigger: ['blur', 'input'],
+        // trigger: ['blur', 'change'],
         message: '请选择生日',
       },
       mobile: {
@@ -114,18 +116,29 @@ export default defineComponent({
         content: () => (
           <NForm model={model} rules={rules} ref={formRef} labelPlacement="left" labelWidth={100}>
             <NFormItem label="昵称：" path="name">
-              <NInput v-model:value={model.name} />
+              <NInput
+                style={{
+                  width: '200px',
+                }}
+                v-model:value={model.name}
+              />
             </NFormItem>
             <NFormItem label="生日：" path="birthday">
-              <NInput v-model:value={model.birthday} />
+              <NDatePicker v-model:value={model.birthday} type="date" />
             </NFormItem>
             <NFormItem label="手机号：" path="mobile">
-              <NInput v-model:value={model.mobile} />
+              <NInput
+                style={{
+                  width: '200px',
+                }}
+                v-model:value={model.mobile}
+              />
             </NFormItem>
             <NFormItem label="性别：" path="gender">
               <NRadioGroup v-model:value={model.gender}>
                 <NRadio value={'0'}>男</NRadio>
                 <NRadio value={'1'}>女</NRadio>
+                <NRadio value={'2'}>保密</NRadio>
               </NRadioGroup>
             </NFormItem>
             <div
@@ -143,6 +156,7 @@ export default defineComponent({
                   formRef.value?.validate((error) => {
                     if (!error) {
                       message.success('验证成功')
+                      model.birthday = dayjs(model.birthday).format('YYYY-MM-DD')
                       requestUpdateUserInfo(model)
                       m.destroy()
                     } else {
@@ -259,6 +273,14 @@ export default defineComponent({
     onMounted(() => {
       requestUserInfoData()
     })
+
+    const renderGender = (gender: number) => {
+      return {
+        0: '男',
+        1: '女',
+        2: '保密',
+      }[gender]
+    }
     return () => (
       <div class={styles.basicInfoWrap}>
         <div
@@ -308,7 +330,7 @@ export default defineComponent({
           </p>
           <p>
             <span class={styles.label}>性别：</span>
-            <span>{+userInfo?.gender == 0 ? '男' : '女'}</span>
+            <span>{renderGender(+userInfo?.gender)}</span>
           </p>
         </div>
       </div>
