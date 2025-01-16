@@ -91,13 +91,13 @@ export default defineComponent({
             <span class={styles.demonstration}></span>
             <NPagination
               size="large"
-              pageSize={15}
+              pageSize={10}
               page={page.value}
               onUpdatePage={(p) => {
                 page.value = p
                 requestGoodsCommentDetail(p)
               }}
-              pageCount={Math.ceil(count.value / 15)}
+              pageCount={Math.ceil(count.value / 10)}
             />
           </div>
         </div>

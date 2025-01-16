@@ -34,10 +34,11 @@ export default defineComponent({
                   marginLeft: '10px',
                 }}
                 onClick={() => {
+                  m.destroy()
                   localStorage.removeItem('token')
                   setIsLogin(false)
                   setUsername('')
-                  window.location.reload()
+                  // window.location.reload()
                   router.push('/')
                 }}
               >
@@ -60,6 +61,7 @@ export default defineComponent({
         <h3 class={styles.title} onClick={() => router.push('/')}>
           小U商城
         </h3>
+
         <div class={styles.right}>
           {isLogin ? (
             <div

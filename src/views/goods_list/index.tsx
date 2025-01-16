@@ -125,9 +125,9 @@ export default defineComponent({
                 <span class={styles.demonstration}></span>
                 <NPagination
                   size="large"
-                  pageSize={15}
+                  pageSize={10}
                   page={page.value}
-                  pageCount={Math.ceil(total.value / 15)}
+                  pageCount={Math.ceil(total.value / 10)}
                   onUpdatePage={(p) => {
                     router.push({
                       name: 'goodsList',
